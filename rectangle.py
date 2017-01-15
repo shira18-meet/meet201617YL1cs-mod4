@@ -18,10 +18,11 @@ class Rectangle :
         else :
             self.height=0
 
+
         self.turtle=turtle.clone() #Make a new turtle object just for this instance so that drawings can be cleared.
         turtle.speed(0) #Make turtle move as fast as possible.
         self.has_been_drawn=False #Keep track of whether shape has been drawn.
-
+        self.turtle.hideturtle()
     def set_length(self,new_length):
         """
         Change the length of the rectangle.
@@ -56,13 +57,18 @@ class Rectangle :
 
         If any old drawings exist, remove them.
         """
+        print("enter start positions, x and then y")
+        x=input()
+        y=input()
+        x=int(x)
+        y=int(y)
         self.turtle.clear() #Remove old drawings (if they exist)
         self.turtle.penup()
-        self.turtle.goto(0,0)
+        self.turtle.goto(x,y)
         self.turtle.pendown()
-        self.turtle.goto(self.length,0)
-        self.turtle.goto(self.length,self.height)
-        self.turtle.goto(0,self.height)
-        self.turtle.goto(0,0)
+        self.turtle.goto(self.length+x,y)
+        self.turtle.goto(self.length+x,self.height+y)
+        self.turtle.goto(x,self.height+y)
+        self.turtle.goto(x,y)
         self.turtle.penup()
         self.has_been_drawn=True
